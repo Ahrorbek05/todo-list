@@ -3,13 +3,13 @@ import styles from '../../components/Todo/index.module.css';
 
 function Todo() {
     const [todos, setTodos] = useState([]);
-    const [newTodo, setTodo] = useState('');
+    const [Todo, setTodo] = useState('');
 
 function addTodo() {
-    if (newTodo) {
-        const newTodos = todos.slice();
-        newTodos.push(newTodo);
-        setTodos(newTodos);
+    if (Todo) {
+        const Todos = todos.slice();
+        Todos.push(Todo);
+        setTodos(Todos);
         setTodo('');
     }
 }
