@@ -6,22 +6,22 @@ function Todo() {
     const [newTodo, setTodo] = useState('');
 
 function addTodo() {
-        if (newTodo) {
-            const newTodos = todos.slice();
-            newTodos.push(newTodo);
-            setTodos(newTodos);
-            setTodo('');
-        }
+    if (newTodo) {
+        const newTodos = todos.slice();
+        newTodos.push(newTodo);
+        setTodos(newTodos);
+        setTodo('');
+    }
 }
 
  function deleteTodo(index) {
-     const newTodos = [];
+     const Todos = [];
      for (let i = 0; i < todos.length; i++) {
          if (i !== index) {
-                newTodos.push(todos[i]);
+                Todos.push(todos[i]);
         }
     }
-        setTodos(newTodos);
+        setTodos(Todos);
 }
 
 function clearAll() {
