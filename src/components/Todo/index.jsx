@@ -36,8 +36,8 @@ function clearAll() {
             <div className={styles["input-container"]}>
                 <input
                     type="text"
-                    value={newTodo}
-                    onChange={(e) => setTodo(e.target.value)}
+                    value={Todo}
+                    onChange={(event) => setTodo(event.target.value)}
                     placeholder="Add your new todo"
                 />
                 <button onClick={addTodo} className={styles["add-button"]}><i className="fa-solid fa-plus"></i></button>
