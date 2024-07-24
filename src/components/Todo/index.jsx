@@ -6,24 +6,31 @@ function Todo() {
     const [newTodo, setTodo] = useState('');
 
 function addTodo() {
-    if (newTodo.trim()) {
-        setTodos(todos.concat(newTodo.trim()));
-        setTodo('');
-    }
+        if (newTodo) {
+            const newTodos = todos.slice();
+            newTodos.push(newTodo);
+            setTodos(newTodos);
+            setTodo('');
+        }
 }
 
-function deleteTodo(index) {
-    const newTodos = todos.slice(0, index).concat(todos.slice(index + 1));
-    setTodos(newTodos);
+ function deleteTodo(index) {
+     const newTodos = [];
+     for (let i = 0; i < todos.length; i++) {
+         if (i !== index) {
+                newTodos.push(todos[i]);
+        }
+    }
+        setTodos(newTodos);
 }
 
 function clearAll() {
-     setTodos([]);
+        setTodos([]);
 }
 
-localStorage.setItem('todo-app', JSON.stringify(todos));
+ localStorage.setItem('todo-app', JSON.stringify(todos));
 
-return (
+ return (
         <div className={styles["todo-app"]}>
             <h3>Todo App</h3>
             <div className={styles["input-container"]}>
@@ -33,13 +40,13 @@ return (
                     onChange={(e) => setTodo(e.target.value)}
                     placeholder="Add your new todo"
                 />
-                <button onClick={addTodo} className={styles["add-button"]}><i class="fa-solid fa-plus"></i></button>
+                <button onClick={addTodo} className={styles["add-button"]}><i className="fa-solid fa-plus"></i></button>
             </div>
             <ul className={styles["todo-list"]}>
                 {todos.map((todo, index) => (
                     <li key={index} className={styles["todo-item"]}>
                         {todo}
-                        <button onClick={() => deleteTodo(index)} className={styles["delete-button"]}><i class="fa-solid fa-trash-can"></i></button>
+                        <button onClick={() => deleteTodo(index)} className={styles["delete-button"]}><i className="fa-solid fa-trash-can"></i></button>
                     </li>
                 ))}
             </ul>
